@@ -1,8 +1,8 @@
-import 'package:quiz_app_tutorial/models/question.dart';
+import 'package:quizapp/models/question.dart';
 
-const List<Question> questions = [
-  Question(
-    question: '1. What is the capital of France?',
+const List<Questions> questions = [
+  Questions(
+    questions: '1. What is the capital of France?',
     correctAnswerIndex: 1,
     options: [
       'a) Madrid',
@@ -11,8 +11,8 @@ const List<Question> questions = [
       'd) Rome',
     ],
   ),
-  Question(
-    question: '2. In what continent is Brazil located?',
+  Questions(
+    questions: '2. In what continent is Brazil located?',
     correctAnswerIndex: 3,
     options: [
       'a) Europe',
@@ -21,8 +21,8 @@ const List<Question> questions = [
       'd) South America',
     ],
   ),
-  Question(
-    question: '3. What is the largest continent in the world?',
+  Questions(
+    questions: '3. What is the largest continent in the world?',
     correctAnswerIndex: 2,
     options: [
       'a) North America',
@@ -31,8 +31,8 @@ const List<Question> questions = [
       'd) South America',
     ],
   ),
-  Question(
-    question: '4. What is the capital city of Australia?',
+  Questions(
+    questions: '4. What is the capital city of Australia?',
     correctAnswerIndex: 3,
     options: [
       'a) Sydney',
@@ -41,8 +41,8 @@ const List<Question> questions = [
       'd) Canberra',
     ],
   ),
-  Question(
-    question: '5. Which of these countries is an island nation?',
+  Questions(
+    questions: '5. Which of these countries is an island nation?',
     correctAnswerIndex: 2,
     options: [
       'a) Italy',
@@ -51,8 +51,8 @@ const List<Question> questions = [
       'd) France',
     ],
   ),
-  Question(
-    question: '6. Which of these countries is located in South America?',
+  Questions(
+    questions: '6. Which of these countries is located in South America?',
     correctAnswerIndex: 2,
     options: [
       'a) Spain',
@@ -61,8 +61,8 @@ const List<Question> questions = [
       'd) Canada',
     ],
   ),
-  Question(
-    question: '7. Which is the largest ocean in the world?',
+  Questions(
+    questions: '7. Which is the largest ocean in the world?',
     correctAnswerIndex: 0,
     options: [
       'a) Pacific Ocean',
@@ -71,8 +71,8 @@ const List<Question> questions = [
       'd) Artic Ocean',
     ],
   ),
-  Question(
-    question: '8. What is the name of the largest desert in the world?',
+  Questions(
+    questions: '8. What is the name of the largest desert in the world?',
     correctAnswerIndex: 1,
     options: [
       'a) Gobi Desert',
@@ -81,8 +81,8 @@ const List<Question> questions = [
       'd) Atacama Desert',
     ],
   ),
-  Question(
-    question:
+  Questions(
+    questions:
         '9. What is the name of the country knows as the "Land of the Rising Sun"?',
     correctAnswerIndex: 3,
     options: [
@@ -92,8 +92,8 @@ const List<Question> questions = [
       'd) Japan',
     ],
   ),
-  Question(
-    question:
+  Questions(
+    questions:
         '10. What phenomenon made the dinosaurs go extinct?',
     correctAnswerIndex: 3,
     options: [
@@ -103,8 +103,8 @@ const List<Question> questions = [
       'd) Ice Age',
     ],
   ),
-  Question(
-    question: '11. What is the shape of the sun?',
+  Questions(
+    questions: '11. What is the shape of the sun?',
     correctAnswerIndex: 0,
     options: [
       'a) Spherical',
@@ -113,8 +113,8 @@ const List<Question> questions = [
       'd) Circle',
     ],
   ),
-  Question(
-    question: '12. What is the tallest mountain in Africa?',
+  Questions(
+    questions: '12. What is the tallest mountain in Africa?',
     correctAnswerIndex: 0,
     options: [
       'a) Killimanjaro',
@@ -123,8 +123,8 @@ const List<Question> questions = [
       'd) Speke',
     ],
   ),
-  Question(
-    question: '13. What is the largest planet in our solar system?',
+  Questions(
+    questions: '13. What is the largest planet in our solar system?',
     correctAnswerIndex: 1,
     options: [
       'a) Earth',
@@ -133,8 +133,8 @@ const List<Question> questions = [
       'd) Venus',
     ],
   ),
-  Question(
-    question: '14. What is the longest river in the world?',
+  Questions(
+    questions: '14. What is the longest river in the world?',
     correctAnswerIndex: 0,
     options: [
       'a) Nile',
@@ -143,8 +143,8 @@ const List<Question> questions = [
       'd) Danube',
     ],
   ),
-  Question(
-    question: '15. What is the smallest planet in our solar system?',
+  Questions(
+    questions: '15. What is the smallest planet in our solar system?',
     correctAnswerIndex: 3,
     options: [
       'a) Venus',
@@ -153,8 +153,8 @@ const List<Question> questions = [
       'd) Mercury',
     ],
   ),
-  Question(
-    question: '16. What is the highest mountain in the world?',
+  Questions(
+    questions: '16. What is the highest mountain in the world?',
     correctAnswerIndex: 1,
     options: [
       'a) Mont Blanc',
@@ -163,8 +163,8 @@ const List<Question> questions = [
       'd) Aconcagua',
     ],
   ),
-  Question(
-    question: '17.What is the flattest Country in the earth?',
+  Questions(
+    questions: '17.What is the flattest Country in the earth?',
     correctAnswerIndex: 2,
     options: [
       'a) Nigeria ',
@@ -172,8 +172,8 @@ const List<Question> questions = [
       'c) Maldeeves',
       'd) Netherlands',
     ],
-  ), Question(
-    question: '18. Upper Volta is the old name of?',
+  ), Questions(
+    questions: '18. Upper Volta is the old name of?',
     correctAnswerIndex: 1,
     options: [
       'a) Cape Verde',
@@ -182,8 +182,8 @@ const List<Question> questions = [
       'd) Denmark',
     ],
   ),
-   Question(
-    question: '19. Who constructed the Suez Canal?',
+   Questions(
+    questions: '19. Who constructed the Suez Canal?',
     correctAnswerIndex: 3,
     options: [
       'a) Fyodor Litke',
@@ -192,8 +192,8 @@ const List<Question> questions = [
       'd) Ferdinand de Lesseps',
     ],
   ),
-   Question(
-    question: '20. How many days does the moon take to revolve round the Earth?',
+   Questions(
+    questions: '20. How many days does the moon take to revolve round the Earth?',
     correctAnswerIndex: 3,
     options: [
       'a) 365 days',

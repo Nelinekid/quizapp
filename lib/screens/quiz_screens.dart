@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
-import '/models/questions.dart';
-import '/screens/result_screen.dart';
+import '/models/questionss.dart';
+import '/screens/result_screens.dart';
 import '/widgets/answer_card.dart';
 import '/widgets/next_button.dart';
 
-class QuizScreen extends StatefulWidget {
-  const QuizScreen({super.key});
+class QuizScreens extends StatefulWidget {
+  const QuizScreens({super.key});
 
   @override
-  State<QuizScreen> createState() => _QuizScreenState();
+  State<QuizScreens> createState() => _QuizScreenState();
 }
 
-class _QuizScreenState extends State<QuizScreen> {
+class _QuizScreenState extends State<QuizScreens> {
   int? selectedAnswerIndex;
   int questionIndex = 0;
   int score = 0;
@@ -40,7 +40,7 @@ class _QuizScreenState extends State<QuizScreen> {
     bool isLastQuestion = questionIndex == questions.length - 1;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Geography'),
+        title: const Text('Mathematics'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(24.0),
@@ -48,7 +48,7 @@ class _QuizScreenState extends State<QuizScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Text(
-              question.question,
+              question.questions,
               style: const TextStyle(
                 fontSize: 21,
               ),

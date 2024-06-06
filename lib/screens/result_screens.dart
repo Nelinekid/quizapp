@@ -1,11 +1,10 @@
 // ignore_for_file: unused_import
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:quiz_app_tutorial/screens/home_screen.dart';
+import 'package:quizapp/screens/home_screen.dart';
 
-import '/models/questions.dart';
-import '/screens/quiz_screen.dart';
+import '/models/questionss.dart';
+import '/screens/quiz_screens.dart';
 import '/widgets/next_button.dart';
 
 class ResultScreen extends StatelessWidget {
@@ -22,13 +21,13 @@ class ResultScreen extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          const SizedBox(width: 1000),
+         const SizedBox(width: 1000),
           const Text(
             'Total Score: ',
             style: TextStyle(
               fontSize: 50,
               fontWeight: FontWeight.w500,
-            ),
+           ),
           ),
           Stack(
             alignment: Alignment.center,
@@ -37,7 +36,7 @@ class ResultScreen extends StatelessWidget {
                 height: 250,
                 width: 250,
                 child: CircularProgressIndicator(
-                  strokeWidth: 10,
+                  strokeWidth: 15,
                   value: score / 20,
                   color: Colors.green,
                   backgroundColor: Colors.red,
@@ -53,8 +52,7 @@ class ResultScreen extends StatelessWidget {
                   Text(
                     '${(score / questions.length * 100).round()}%',
                     style: const TextStyle(fontSize: 25),
-                  ),
-
+                  )
                 ],
               ),
             ],
