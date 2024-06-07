@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:quizapp/log_sign.dart';
 
-
 void main() {
   runApp(const MainApp());
 }
