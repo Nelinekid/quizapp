@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:quizapp/screens/home_screen.dart';
 
+void main() => runApp(MyApp());
+
 class MyApp extends StatelessWidget {
   @override
-  Widget build (BuildContext context) {
+  Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Login and Signup',
       home: LoginPage(),
@@ -18,7 +20,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
-  final _emailController = TextEditingController();
+  final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
 
   @override
@@ -27,21 +29,23 @@ class _LoginPageState extends State<LoginPage> {
       appBar: AppBar(
         title: Text('Login'),
       ),
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
+      body: SingleChildScrollView(
+        padding: EdgeInsets.symmetric(horizontal: 16.0),
         child: Form(
           key: _formKey,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              SizedBox(height: 100.0),
               TextFormField(
-                controller: _emailController,
+                controller: _usernameController,
                 decoration: InputDecoration(
-                  hintText: 'Name',
+                  labelText: 'User Name or Email',
+                  border: OutlineInputBorder(),
                 ),
-                validator:(value) {
+                validator: (value) {
                   if (value!.isEmpty) {
-                    return 'Please enter your name';
+                    return 'Please enter your username or email';
                   }
                   return null;
                 },
@@ -51,11 +55,12 @@ class _LoginPageState extends State<LoginPage> {
                 controller: _passwordController,
                 obscureText: true,
                 decoration: InputDecoration(
-                  hintText: 'Password',
+                  labelText: 'Password',
+                  border: OutlineInputBorder(),
                 ),
                 validator: (value) {
                   if (value!.isEmpty) {
-                    return 'Please enter a password';
+                    return 'Please enter your password';
                   }
                   return null;
                 },
@@ -64,23 +69,28 @@ class _LoginPageState extends State<LoginPage> {
               ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
-                    print('Name: ${_emailController.text}');
+                    String userNameOrEmail = _usernameController.text;
+                    print('User Name or Email: $userNameOrEmail');
                     print('Password: ${_passwordController.text}');
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(
+                        builder: (context) => HomeScreen(userNameOrEmail: userNameOrEmail),
+                      ),
+                    );
                   }
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => HomePage()));
                 },
                 child: Text('Login'),
-                ),
-                SizedBox(height: 16.0),
-                TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context, 
-                      MaterialPageRoute(builder: (context) => SignupPage()),
-                      );
-                  },
-                  child: Text('Don\'t have an account? Signup'),
-                ),
+              ),
+              SizedBox(height: 16.0),
+              TextButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SignupPage()),
+                  );
+                },
+                child: Text('Don\'t have an account? Signup'),
+              ),
             ],
           ),
         ),
@@ -97,7 +107,9 @@ class SignupPage extends StatefulWidget {
 class _SignupPageState extends State<SignupPage> {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
+  final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
+  final _confirmPasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -105,21 +117,37 @@ class _SignupPageState extends State<SignupPage> {
       appBar: AppBar(
         title: Text('Sign Up'),
       ),
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
+      body: SingleChildScrollView(
+        padding: EdgeInsets.symmetric(horizontal: 16.0),
         child: Form(
           key: _formKey,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              SizedBox(height: 100.0),
               TextFormField(
                 controller: _emailController,
                 decoration: InputDecoration(
-                  hintText: 'Email',
+                  labelText: 'Email',
+                  border: OutlineInputBorder(),
                 ),
                 validator: (value) {
                   if (value!.isEmpty) {
-                    return 'Please enter a damned email';
+                    return 'Please enter your email';
+                  }
+                  return null;
+                },
+              ),
+              SizedBox(height: 16.0),
+              TextFormField(
+                controller: _usernameController,
+                decoration: InputDecoration(
+                  labelText: 'User Name',
+                  border: OutlineInputBorder(),
+                ),
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'Please enter your username';
                   }
                   return null;
                 },
@@ -129,39 +157,30 @@ class _SignupPageState extends State<SignupPage> {
                 controller: _passwordController,
                 obscureText: true,
                 decoration: InputDecoration(
-                  hintText: 'Phone Number',
+                  labelText: 'Password',
+                  border: OutlineInputBorder(),
                 ),
                 validator: (value) {
                   if (value!.isEmpty) {
-                    return 'Please enter a phone number';
+                    return 'Please enter your password';
                   }
                   return null;
                 },
               ),
               SizedBox(height: 16.0),
               TextFormField(
-                controller: _emailController,
+                controller: _confirmPasswordController,
                 obscureText: true,
                 decoration: InputDecoration(
-                  hintText: 'Name',
+                  labelText: 'Confirm Password',
+                  border: OutlineInputBorder(),
                 ),
                 validator: (value) {
                   if (value!.isEmpty) {
-                    return 'Please enter a username';
+                    return 'Please confirm your password';
                   }
-                  return null;
-                },
-              ),
-              SizedBox(height: 16.0),
-              TextFormField(
-                controller: _passwordController,
-                obscureText: true,
-                decoration: InputDecoration(
-                  hintText: 'Password',
-                ),
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return 'Please enter a password';
+                  if (value != _passwordController.text) {
+                    return 'Passwords do not match';
                   }
                   return null;
                 },
@@ -171,7 +190,11 @@ class _SignupPageState extends State<SignupPage> {
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     print('Email: ${_emailController.text}');
+                    print('User Name: ${_usernameController.text}');
                     print('Password: ${_passwordController.text}');
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(builder: (context) => LoginPage()),
+                    );
                   }
                 },
                 child: Text('Sign Up'),
@@ -179,10 +202,12 @@ class _SignupPageState extends State<SignupPage> {
               SizedBox(height: 16.0),
               TextButton(
                 onPressed: () {
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => LoginPage()));
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context) => LoginPage()),
+                  );
                 },
                 child: Text('Already have an account? Login'),
-                )
+              ),
             ],
           ),
         ),
