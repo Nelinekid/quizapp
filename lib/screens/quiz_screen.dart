@@ -42,57 +42,97 @@ class _QuizScreenState extends State<QuizScreen> {
       appBar: AppBar(
         title: const Text('Geography'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(24.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Text(
-              question.questions,
-              style: const TextStyle(
-                fontSize: 21,
+      body: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/images/question_mark.jpg'),
+                fit: BoxFit.cover,
               ),
-              textAlign: TextAlign.center,
             ),
-            ListView.builder(
-              shrinkWrap: true,
-              itemCount: question.options.length,
-              itemBuilder: (context, index) {
-                return GestureDetector(
-                  onTap: selectedAnswerIndex == null
-                      ? () => pickAnswer(index)
-                      : null,
-                  child: AnswerCard(
-                    currentIndex: index,
-                    question: question.options[index],
-                    isSelected: selectedAnswerIndex == index,
-                    selectedAnswerIndex: selectedAnswerIndex,
-                    correctAnswerIndex: question.correctAnswerIndex,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: Column(
+              children: [
+                Text(
+                  question.questions,
+                  style: const TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
                   ),
-                );
-              },
-            ),
-            // Next Button
-            isLastQuestion
-                ? RectangularButton(
-                    onPressed: () {
-                      Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(
-                          builder: (_) => ResultScreen(
-                            score: score,
+                  textAlign: TextAlign.center,
+                ),
+                Spacer(), // Adds space between the question and the answers
+                Expanded(
+                  flex: 5,
+                  child: ListView.builder(
+                    itemCount: question.options.length,
+                    itemBuilder: (context, index) {
+                      bool isSelected = selectedAnswerIndex == index;
+                      bool isCorrect = question.correctAnswerIndex == index;
+                      bool isWrong = selectedAnswerIndex != null && selectedAnswerIndex == index && !isCorrect;
+
+                      Color getBackgroundColor() {
+                        if (selectedAnswerIndex == null) {
+                          return Colors.black.withOpacity(0.6);
+                        } else if (isCorrect) {
+                          return Colors.green;
+                        } else if (isWrong) {
+                          return Colors.red;
+                        } else {
+                          return Colors.black.withOpacity(0.6);
+                        }
+                      }
+
+                      return GestureDetector(
+                        onTap: selectedAnswerIndex == null
+                            ? () => pickAnswer(index)
+                            : null,
+                        child: Container(
+                          margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                          padding: const EdgeInsets.all(16.0),
+                          decoration: BoxDecoration(
+                            color: getBackgroundColor(),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Text(
+                            question.options[index],
+                            style: const TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                       );
                     },
-                    label: 'Finish',
-                  )
-                : RectangularButton(
-                    onPressed:
-                        selectedAnswerIndex != null ? goToNextQuestion : null,
-                    label: 'Next',
                   ),
-          ],
-        ),
+                ),
+                Spacer(), // Adds space between the answers and the button
+                // Next Button
+                isLastQuestion
+                    ? RectangularButton(
+                  onPressed: () {
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(
+                        builder: (_) => ResultScreen(
+                          score: score,
+                        ),
+                      ),
+                    );
+                  },
+                  label: 'Finish',
+                )
+                    : RectangularButton(
+                  onPressed: selectedAnswerIndex != null ? goToNextQuestion : null,
+                  label: 'Next',
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

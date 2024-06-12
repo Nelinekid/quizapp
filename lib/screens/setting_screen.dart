@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'home_screen.dart';
+import 'package:quizapp/log_sign.dart'; // Import the LoginPage
 
 class SettingScreen extends StatefulWidget {
   @override
@@ -29,36 +30,92 @@ class _SettingScreenState extends State<SettingScreen> {
     }
   }
 
+  void _showSignoutDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Signout'),
+          content: Text('Do you want to signout from this account?'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(true); // Pop dialog with true value
+              },
+              child: Text(
+                'Yes',
+                style: TextStyle(color: Colors.red),
+              ),
+              style: TextButton.styleFrom(
+                foregroundColor: Colors.red, // Use foregroundColor for text color
+                backgroundColor: Colors.redAccent.withOpacity(0.1), // Light red hover effect
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(false); // Pop dialog with false value
+              },
+              child: Text('No'),
+              style: TextButton.styleFrom(
+                foregroundColor: Colors.grey, // Use foregroundColor for text color
+                backgroundColor: Colors.grey.withOpacity(0.1), // Light grey hover effect
+              ),
+            ),
+          ],
+        );
+      },
+    ).then((value) {
+      // After dialog is dismissed
+      if (value != null && value) {
+        // Navigate to login screen and remove all routes from stack
+        Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (context) => LoginPage()),
+              (Route<dynamic> route) => false,
+        );
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Settings'),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+      body: Stack(
         children: [
-          SettingButton(
-            title: 'Edit Profile',
-            icon: Icons.edit,
-            onTap: () {
-              // Navigate to Edit Profile Screen
-            },
+          Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/images/question_mark.jpg'),
+                fit: BoxFit.cover,
+              ),
+            ),
           ),
-          SettingButton(
-            title: 'Appearance',
-            icon: Icons.color_lens,
-            onTap: () {
-              // Navigate to Appearance Screen
-            },
-          ),
-          SettingButton(
-            title: 'Signout',
-            icon: Icons.exit_to_app,
-            onTap: () {
-              // Perform signout action
-            },
-            isSignout: true,
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              SettingButton(
+                title: 'Edit Profile',
+                icon: Icons.edit,
+                onTap: () {
+                  // Navigate to Edit Profile Screen
+                },
+              ),
+              SettingButton(
+                title: 'Appearance',
+                icon: Icons.color_lens,
+                onTap: () {
+                  // Navigate to Appearance Screen
+                },
+              ),
+              SettingButton(
+                title: 'Signout',
+                icon: Icons.exit_to_app,
+                onTap: _showSignoutDialog,
+                isSignout: true,
+              ),
+            ],
           ),
         ],
       ),

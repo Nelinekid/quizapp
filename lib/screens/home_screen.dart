@@ -55,53 +55,63 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                SubjectCircle(
-                  title: 'Geography',
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => QuizScreen()),
-                    );
-                  },
-                  isClickable: true,
-                ),
-                SubjectCircle(
-                  title: 'Mathematics',
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => QuizScreens()),
-                    );
-                  },
-                  isClickable: true,
-                ),
-              ],
+      body: Stack(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/images/question_mark.jpg'),
+                fit: BoxFit.cover,
+              ),
             ),
-            SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                SubjectCircle(
-                  title: 'Java',
-                  onTap: () {},
-                  isClickable: false,
-                ),
-                SubjectCircle(
-                  title: 'Python',
-                  onTap: () {},
-                  isClickable: false,
-                ),
-              ],
-            ),
-          ],
-        ),
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  SubjectCircle(
+                    title: 'Geography',
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => QuizScreen()),
+                      );
+                    },
+                    isClickable: true,
+                  ),
+                  SubjectCircle(
+                    title: 'Mathematics',
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => QuizScreens()),
+                      );
+                    },
+                    isClickable: true,
+                  ),
+                ],
+              ),
+              SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  SubjectCircle(
+                    title: 'Java',
+                    onTap: () {},
+                    isClickable: false,
+                  ),
+                  SubjectCircle(
+                    title: 'Python',
+                    onTap: () {},
+                    isClickable: false,
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
@@ -163,8 +173,8 @@ class SubjectCircle extends StatelessWidget {
                 title,
                 style: TextStyle(
                   color: Colors.black,
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
+                  fontSize: 18, // Increased font size for better readability
+                  fontWeight: FontWeight.bold, // Increased font weight
                 ),
                 textAlign: TextAlign.center,
               ),
