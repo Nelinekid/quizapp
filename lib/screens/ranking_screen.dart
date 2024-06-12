@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:quizapp/screens/setting_screen.dart';
 import 'home_screen.dart';
-import 'package:quizapp/screens/ranking_screen.dart';
+// ignore: unused_import
 import 'package:quizapp/log_sign.dart'; // Import the LoginPage
 
-class SettingScreen extends StatefulWidget {
+class RankingScreen extends StatefulWidget {
   @override
-  _SettingScreenState createState() => _SettingScreenState();
+  _RankingScreenState createState() => _RankingScreenState();
 }
 
-class _SettingScreenState extends State<SettingScreen> {
-  int _currentIndex = 3; // Default to Settings tab
+class _RankingScreenState extends State<RankingScreen> {
+  int _currentIndex = 2; // Default to Rankings tab
 
   void _onItemTapped(int index) {
     setState(() {
@@ -37,57 +38,11 @@ class _SettingScreenState extends State<SettingScreen> {
     }
   }
 
-  void _showSignoutDialog() {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('Signout'),
-          content: Text('Do you want to signout from this account?'),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop(true); // Pop dialog with true value
-              },
-              child: Text(
-                'Yes',
-                style: TextStyle(color: Colors.red),
-              ),
-              style: TextButton.styleFrom(
-                foregroundColor: Colors.red, // Use foregroundColor for text color
-                backgroundColor: Colors.redAccent.withOpacity(0.1), // Light red hover effect
-              ),
-            ),
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop(false); // Pop dialog with false value
-              },
-              child: Text('No'),
-              style: TextButton.styleFrom(
-                foregroundColor: Colors.grey, // Use foregroundColor for text color
-                backgroundColor: Colors.grey.withOpacity(0.1), // Light grey hover effect
-              ),
-            ),
-          ],
-        );
-      },
-    ).then((value) {
-      // After dialog is dismissed
-      if (value != null && value) {
-        // Navigate to login screen and remove all routes from stack
-        Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (context) => LoginPage()),
-              (Route<dynamic> route) => false,
-        );
-      }
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Settings'),
+        title: Text('Rankings'),
       ),
       body: Stack(
         children: [
@@ -102,28 +57,39 @@ class _SettingScreenState extends State<SettingScreen> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
+              // SettingButton(
+              //   title: '4th Position',
+              //   icon: Icons.edit,
+              //   onTap: () {
+              //     // Navigate to Edit Profile Screen
+              //   },
+              // ),
               SettingButton(
-                title: 'Edit Profile',
-                icon: Icons.edit,
+                // image: Image.asset('assets/images/HEAD.JPG'),
+                title: '4th Position',
+                icon: Icons.person,
                 onTap: () {
                   // Navigate to Edit Profile Screen
                 },
               ),
               SettingButton(
-                title: 'Appearance',
-                icon: Icons.color_lens,
+                // image: Image.asset('assets/images/HEAD.JPG'),
+                title: '5th Position',
+                icon: Icons.person,
                 onTap: () {
                   // Navigate to Appearance Screen
                 },
               ),
               SettingButton(
-                title: 'Signout',
-                icon: Icons.exit_to_app,
-                onTap: _showSignoutDialog,
-                isSignout: true,
+                // image: Image.asset('assets/images/HEAD.JPG'),
+                title: '6th Position',
+                icon: Icons.person,
+                onTap: () {
+
+                },
               ),
             ],
-          ),
+          )
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quizapp/screens/quiz_screen.dart';
 import 'package:quizapp/screens/quiz_screens.dart';
+import 'package:quizapp/screens/ranking_screen.dart';
 import 'package:quizapp/screens/setting_screen.dart'; // Import the SettingScreen
 
 class HomeScreen extends StatefulWidget {
@@ -24,6 +25,12 @@ class _HomeScreenState extends State<HomeScreen> {
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => HomeScreen(userNameOrEmail: widget.userNameOrEmail)),
+        );
+        break;
+      case 2:
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => RankingScreen()),
         );
         break;
       case 3:

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '/models/questionss.dart';
 import '/screens/result_screens.dart';
+// ignore: unused_import
 import '/widgets/answer_card.dart';
 import '/widgets/next_button.dart';
 
@@ -70,6 +71,7 @@ class _QuizScreenState extends State<QuizScreens> {
                 shrinkWrap: true,
                 itemCount: question.options.length,
                 itemBuilder: (context, index) {
+                  // ignore: unused_local_variable
                   bool isSelected = selectedAnswerIndex == index;
                   bool isCorrect = question.correctAnswerIndex == index;
                   bool isWrong = selectedAnswerIndex != null && selectedAnswerIndex == index && !isCorrect;
