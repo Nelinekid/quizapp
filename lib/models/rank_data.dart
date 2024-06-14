@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart' show BorderRadius, BoxDecoration, BuildContext, CircleAvatar, Colors, Container, EdgeInsets, GestureDetector, MouseRegion, Row, SizedBox, State, StatefulWidget, Text, TextStyle, VoidCallback, Widget, immutable;
+import 'package:flutter/material.dart' show BorderRadius, BoxDecoration, BuildContext, CircleAvatar, Colors, Container, EdgeInsets, GestureDetector, MouseRegion, Row, State, StatefulWidget, Text, TextStyle, VoidCallback, Widget, immutable;
 import 'package:flutter/widgets.dart';
 
 @immutable
@@ -13,7 +13,7 @@ class RankData extends StatefulWidget{
   });
 
   final String index;
-  final Image url;
+  final String url;
   final String name;
   final String points;
   final VoidCallback onTap;
@@ -41,28 +41,22 @@ class _RankDataState extends State<RankData> {
           ),
           child: Row(
             children: [
-              Text(
-                'LEADERBOARD',
-                style: TextStyle(
-                  fontSize: 2,
-                  fontWeight: FontWeight.bold
-                ),
-              ),
               Padding(
                 padding: const EdgeInsets.all(14.0),
                 child: Text(
                   widget.index,
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 16,
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold
                   ),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.all(10.0),
                 child: CircleAvatar(
-                  radius: 30,
-                  backgroundImage: AssetImage('assets/images/HEAD.JPG'),
+                  radius: 20,
+                  backgroundImage: AssetImage(widget.url),
                 ),
               ),
               Padding(

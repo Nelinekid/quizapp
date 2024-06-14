@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:quizapp/screens/setting_screen.dart';
 import 'package:quizapp/models/models.dart';
 import 'home_screen.dart';
@@ -61,53 +62,48 @@ class _RankingScreenState extends State<RankingScreen> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
+              const Center(
+                child: Text(
+                  'LEADERBOARD',
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold
+                  ),
+                ),
+              ),
               RankData(
                 index: '1',
-                url: Image.asset('assets/images/HEAD.JPG'),
+                url: 'assets/images/HEAD.JPG',
                 name: 'Spida Mitchell', 
                 points: '1000pts',
                 onTap: (){},
               ),
               RankData(
-                index: '1',
-                url: Image.asset('assets/images/HEAD.JPG'),
+                index: '2',
+                url: 'assets/images/HEAD.JPG',
                 name: 'Spida Mitchell', 
-                points: '1000pts',
+                points: '500pts',
                 onTap: (){},
               ),
               RankData(
-                index: '1',
-                url: Image.asset('assets/images/HEAD.JPG'),
+                index: '3',
+                url: 'assets/images/HEAD.JPG',
                 name: 'Spida Mitchell', 
-                points: '1000pts',
+                points: '250pts',
                 onTap: (){},
               ),
               RankData(
-                index: '1',
-                url: Image.asset('assets/images/HEAD.JPG'),
+                index: '4',
+                url: 'assets/images/HEAD.JPG',
                 name: 'Spida Mitchell', 
-                points: '1000pts',
+                points: '125pts',
                 onTap: (){},
               ),
               RankData(
-                index: '1',
-                url: Image.asset('assets/images/HEAD.JPG'),
+                index: '5',
+                url: 'assets/images/HEAD.JPG',
                 name: 'Spida Mitchell', 
-                points: '1000pts',
-                onTap: (){},
-              ),
-              RankData(
-                index: '1',
-                url: Image.asset('assets/images/HEAD.JPG'),
-                name: 'Spida Mitchell', 
-                points: '1000pts',
-                onTap: (){},
-              ),
-              RankData(
-                index: '1',
-                url: Image.asset('assets/images/HEAD.JPG'),
-                name: 'Spida Mitchell', 
-                points: '1000pts',
+                points: '100pts',
                 onTap: (){},
               ),
             ],
