@@ -7,7 +7,7 @@ import 'package:quizapp/screens/setting_screen.dart'; // Import the SettingScree
 class HomeScreen extends StatefulWidget {
   final String userNameOrEmail;
 
-  HomeScreen({required this.userNameOrEmail});
+  const HomeScreen({super.key, required this.userNameOrEmail});
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -30,13 +30,13 @@ class _HomeScreenState extends State<HomeScreen> {
       case 2:
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => RankingScreen()),
+          MaterialPageRoute(builder: (context) => const RankingScreen()),
         );
         break;
       case 3:
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => SettingScreen()),
+          MaterialPageRoute(builder: (context) => const SettingScreen()),
         );
         break;
     }
@@ -46,14 +46,14 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Select Subject'),
+        title: const Text('Select Subject'),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 16.0),
             child: CircleAvatar(
               child: Text(
                 widget.userNameOrEmail.substring(0, 1).toUpperCase(),
-                style: TextStyle(
+                style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 20,
                 ),
@@ -65,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Stack(
         children: [
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('assets/images/question_mark.jpg'),
                 fit: BoxFit.cover,
@@ -83,7 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => QuizScreen()),
+                        MaterialPageRoute(builder: (context) => const QuizScreen()),
                       );
                     },
                     isClickable: true,
@@ -93,14 +93,14 @@ class _HomeScreenState extends State<HomeScreen> {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => QuizScreens()),
+                        MaterialPageRoute(builder: (context) => const QuizScreens()),
                       );
                     },
                     isClickable: true,
                   ),
                 ],
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -126,7 +126,7 @@ class _HomeScreenState extends State<HomeScreen> {
         selectedItemColor: Colors.pink,
         unselectedItemColor: Colors.white,
         backgroundColor: Colors.black,
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
@@ -154,7 +154,7 @@ class SubjectCircle extends StatelessWidget {
   final VoidCallback onTap;
   final bool isClickable;
 
-  SubjectCircle({
+  const SubjectCircle({super.key, 
     required this.title,
     required this.onTap,
     this.isClickable = true,
@@ -178,15 +178,15 @@ class SubjectCircle extends StatelessWidget {
             children: [
               Text(
                 title,
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.black,
                   fontSize: 18, // Increased font size for better readability
                   fontWeight: FontWeight.bold, // Increased font weight
                 ),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: 8),
-              Row(
+              const SizedBox(height: 8),
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(Icons.star_border, color: Colors.grey),

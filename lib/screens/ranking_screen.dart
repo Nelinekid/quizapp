@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:quizapp/screens/setting_screen.dart';
+import 'package:quizapp/models/models.dart';
 import 'home_screen.dart';
 // ignore: unused_import
 import 'package:quizapp/log_sign.dart'; // Import the LoginPage
 
 class RankingScreen extends StatefulWidget {
+  const RankingScreen({super.key});
+
   @override
   _RankingScreenState createState() => _RankingScreenState();
 }
@@ -20,19 +23,20 @@ class _RankingScreenState extends State<RankingScreen> {
       case 0:
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => HomeScreen(userNameOrEmail: 'User')),
+          MaterialPageRoute(
+              builder: (context) => const HomeScreen(userNameOrEmail: 'User')),
         );
         break;
       case 2:
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => RankingScreen()),
+          MaterialPageRoute(builder: (context) => const RankingScreen()),
         );
         break;
       case 3:
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => SettingScreen()),
+          MaterialPageRoute(builder: (context) => const SettingScreen()),
         );
         break;
     }
@@ -42,12 +46,12 @@ class _RankingScreenState extends State<RankingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Rankings'),
+        title: const Text('Rankings'),
       ),
       body: Stack(
         children: [
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('assets/images/question_mark.jpg'),
                 fit: BoxFit.cover,
@@ -57,36 +61,54 @@ class _RankingScreenState extends State<RankingScreen> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              // SettingButton(
-              //   title: '4th Position',
-              //   icon: Icons.edit,
-              //   onTap: () {
-              //     // Navigate to Edit Profile Screen
-              //   },
-              // ),
-              SettingButton(
-                // image: Image.asset('assets/images/HEAD.JPG'),
-                title: '4th Position',
-                icon: Icons.person,
-                onTap: () {
-                  // Navigate to Edit Profile Screen
-                },
+              RankData(
+                index: '1',
+                url: Image.asset('assets/images/HEAD.JPG'),
+                name: 'Spida Mitchell', 
+                points: '1000pts',
+                onTap: (){},
               ),
-              SettingButton(
-                // image: Image.asset('assets/images/HEAD.JPG'),
-                title: '5th Position',
-                icon: Icons.person,
-                onTap: () {
-                  // Navigate to Appearance Screen
-                },
+              RankData(
+                index: '1',
+                url: Image.asset('assets/images/HEAD.JPG'),
+                name: 'Spida Mitchell', 
+                points: '1000pts',
+                onTap: (){},
               ),
-              SettingButton(
-                // image: Image.asset('assets/images/HEAD.JPG'),
-                title: '6th Position',
-                icon: Icons.person,
-                onTap: () {
-
-                },
+              RankData(
+                index: '1',
+                url: Image.asset('assets/images/HEAD.JPG'),
+                name: 'Spida Mitchell', 
+                points: '1000pts',
+                onTap: (){},
+              ),
+              RankData(
+                index: '1',
+                url: Image.asset('assets/images/HEAD.JPG'),
+                name: 'Spida Mitchell', 
+                points: '1000pts',
+                onTap: (){},
+              ),
+              RankData(
+                index: '1',
+                url: Image.asset('assets/images/HEAD.JPG'),
+                name: 'Spida Mitchell', 
+                points: '1000pts',
+                onTap: (){},
+              ),
+              RankData(
+                index: '1',
+                url: Image.asset('assets/images/HEAD.JPG'),
+                name: 'Spida Mitchell', 
+                points: '1000pts',
+                onTap: (){},
+              ),
+              RankData(
+                index: '1',
+                url: Image.asset('assets/images/HEAD.JPG'),
+                name: 'Spida Mitchell', 
+                points: '1000pts',
+                onTap: (){},
               ),
             ],
           )
@@ -98,7 +120,7 @@ class _RankingScreenState extends State<RankingScreen> {
         selectedItemColor: Colors.pink,
         unselectedItemColor: Colors.white,
         backgroundColor: Colors.black,
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
@@ -121,58 +143,23 @@ class _RankingScreenState extends State<RankingScreen> {
   }
 }
 
-class SettingButton extends StatefulWidget {
-  final String title;
-  final IconData icon;
-  final VoidCallback onTap;
-  final bool isSignout;
-
-  SettingButton({
-    required this.title,
-    required this.icon,
-    required this.onTap,
-    this.isSignout = false,
-  });
-
-  @override
-  _SettingButtonState createState() => _SettingButtonState();
-}
-
-class _SettingButtonState extends State<SettingButton> {
-  bool _isHovered = false;
+class _rank extends StatelessWidget {
+  const _rank({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MouseRegion(
-      onEnter: (_) => setState(() => _isHovered = true),
-      onExit: (_) => setState(() => _isHovered = false),
-      child: GestureDetector(
-        onTap: widget.onTap,
-        child: Container(
-          margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-          padding: EdgeInsets.all(20),
-          decoration: BoxDecoration(
-            color: _isHovered ? Colors.grey[800] : Colors.grey[900],
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Row(
-            children: [
-              Icon(
-                widget.icon,
-                color: widget.isSignout ? Colors.red : Colors.white,
-              ),
-              SizedBox(width: 20),
-              Text(
-                widget.title,
-                style: TextStyle(
-                  color: widget.isSignout ? Colors.red : Colors.white,
-                  fontSize: 18,
-                ),
-              ),
-            ],
+    return Column(
+      children: [
+        Center(
+          child: Text(
+            'Top Scorers',
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
           ),
         ),
-      ),
+        ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemBuilder: (BuildContext context, int index) {})
+      ],
     );
   }
 }
