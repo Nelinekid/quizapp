@@ -46,7 +46,7 @@ class _QuizScreenState extends State<QuizScreens> {
       body: Stack(
         children: [
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('assets/images/question_mark.jpg'),
                 fit: BoxFit.cover,

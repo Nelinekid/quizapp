@@ -46,7 +46,7 @@ class _QuizScreenState extends State<QuizScreen> {
       body: Stack(
         children: [
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('assets/images/question_mark.jpg'),
                 fit: BoxFit.cover,
@@ -65,7 +65,7 @@ class _QuizScreenState extends State<QuizScreen> {
                   ),
                   textAlign: TextAlign.center,
                 ),
-                Spacer(), // Adds space between the question and the answers
+                const Spacer(), // Adds space between the question and the answers
                 Expanded(
                   flex: 5,
                   child: ListView.builder(
@@ -112,7 +112,7 @@ class _QuizScreenState extends State<QuizScreen> {
                     },
                   ),
                 ),
-                Spacer(), // Adds space between the answers and the button
+                const Spacer(), // Adds space between the answers and the button
                 // Next Button
                 isLastQuestion
                     ? RectangularButton(
