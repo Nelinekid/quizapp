@@ -138,24 +138,3 @@ class _RankingScreenState extends State<RankingScreen> {
     );
   }
 }
-
-class _rank extends StatelessWidget {
-  const _rank({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Center(
-          child: Text(
-            'Top Scorers',
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-          ),
-        ),
-        ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (BuildContext context, int index) {})
-      ],
-    );
-  }
-}
